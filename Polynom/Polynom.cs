@@ -13,8 +13,11 @@ namespace Polynomial
 
         public Polynom(params double[] coefficient)
         {
-            this.degree = coefficient.Length - 1;
-            this.coefficient = (double[])coefficient.Clone();
+            if (!ReferenceEquals(coefficient, null))
+            {
+                this.degree = coefficient.Length - 1;
+                this.coefficient = (double[])coefficient.Clone();
+            }
         }
 
         public double this[int i]
@@ -104,6 +107,10 @@ namespace Polynomial
 
         public static Polynom operator +(Polynom a, Polynom b)
         {
+            if (ReferenceEquals(a, null) || ReferenceEquals(b, null))
+            {
+                return null;
+            }
             Polynom greater;
             Polynom less;
             if (a.degree > b.degree)
@@ -131,6 +138,10 @@ namespace Polynomial
 
         public static Polynom operator -(Polynom a)
         {
+            if (ReferenceEquals(a, null))
+            {
+                return null;
+            }
             double[] coeff = new double[a.coefficient.Length];
             for(int i=0; i<coeff.Length; i++)
             {
@@ -141,11 +152,19 @@ namespace Polynomial
 
         public static Polynom operator -(Polynom a, Polynom b)
         {
+            if (ReferenceEquals(a, null) || ReferenceEquals(b, null))
+            {
+                return null;
+            }
             return a + (-b);
         }
 
         public static Polynom operator *(Polynom a, Polynom b)
         {
+            if (ReferenceEquals(a, null) || ReferenceEquals(b, null))
+            {
+                return null;
+            }
             double[] coeff = new double[a.degree + b.degree + 1];
             for(int i=0; i<=a.degree ; i++)
             {
@@ -158,10 +177,14 @@ namespace Polynomial
             return c;
         }
 
-        public double Calculate(int degree, double[] matrix, double x)
+        public double Calculate(double[] matrix, double x)
         {
+            if (ReferenceEquals(matrix, null))
+            {
+                return 0;
+            }
             double value = 0;
-            for(int i=0; i<=degree; i++)
+            for(int i=0; i<=matrix.Length-1; i++)
             {
                 x *= matrix[i];
                 value += Math.Pow(x, i);

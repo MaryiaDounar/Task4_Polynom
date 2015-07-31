@@ -81,6 +81,7 @@ namespace PolynomialTest
             Polynom polynom1 = new Polynom(coeffPolynom1);
             Polynom polynom2 = (Polynom) polynom1.Clone();
             Assert.That(polynom1.Equals(polynom2), Is.True);
+            Assert.That(ReferenceEquals(polynom1, polynom2), Is.False);
         }
 
        //private IEnumerable<TestCaseData> GetTestData()
