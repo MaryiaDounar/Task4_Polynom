@@ -15,8 +15,6 @@ namespace PolynomialTest
     [TestFixture]
     public class PolynomTest
     {
-      // private CsvReader csv = new CsvReader(new StreamReader("Data.csv"), true);
-
        public double[] coeffPolynom1 = { 1, 2, 3 };
        private double[] coeffPolynom2 = { 1, 2, 3, 4 };
        private double[] coeffAdd = { 2, 4, 6, 4 };
@@ -83,32 +81,5 @@ namespace PolynomialTest
             Assert.That(polynom1.Equals(polynom2), Is.True);
             Assert.That(ReferenceEquals(polynom1, polynom2), Is.False);
         }
-
-       //private IEnumerable<TestCaseData> GetTestData()
-       //{
-      
-       //        while (csv.ReadNextRecord() != false)
-       //        {
-       //            string[] polynom1String = Regex.Split(csv[0], ",");
-       //            string[] polynom2String = Regex.Split(csv[1], ",");
-       //            string[] polynom3String = Regex.Split(csv[2], ",");
-       //            double[] coeffPolynom1 = GetCoefficient(polynom1String);
-       //            double[] coeffPolynom2 = GetCoefficient(polynom2String);
-       //            double[] coeffResult = GetCoefficient(polynom3String);
-       //            yield return new TestCaseData(new []{ coeffPolynom1, coeffPolynom2, coeffResult });
-       //        }
-       //}
-
-   
-
-       //private double[] GetCoefficient(string[] arrayString)
-       //{
-       //    double[] arrayDouble = new double[arrayString.Length];
-       //    for (int i = 0; i < arrayString.Length; i++)
-       //    {
-       //        arrayDouble[i] = double.Parse(arrayString[i]);
-       //    }
-       //    return arrayDouble;
-       //}
     }
 }
